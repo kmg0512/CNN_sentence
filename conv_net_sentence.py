@@ -11,8 +11,7 @@ Much of the code is modified from
 import _pickle
 import numpy as np
 from collections import defaultdict, OrderedDict
-import theano
-import theano.tensor as T
+import torch
 import re
 import warnings
 import sys
@@ -22,13 +21,13 @@ warnings.filterwarnings("ignore")
 
 #different non-linearities
 def ReLU(x):
-    y = T.maximum(0.0, x)
+    y = torch.relu(x)
     return(y)
 def Sigmoid(x):
-    y = T.nnet.sigmoid(x)
+    y = torch.sigmoid(x)
     return(y)
 def Tanh(x):
-    y = T.tanh(x)
+    y = torch.tanh(x)
     return(y)
 def Iden(x):
     y = x

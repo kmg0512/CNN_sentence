@@ -18,7 +18,7 @@ To process the raw data, run
 python process_data.py path
 ```
 
-where path points to the word2vec binary file (i.e. `GoogleNews-vectors-negative300.bin` file). 
+where path points to the word2vec binary file (i.e. `GoogleNews-vectors-negative300.bin` file).
 This will create a pickle object called `mr.p` in the same folder, which contains the dataset
 in the right format.
 
@@ -36,12 +36,14 @@ THEANO_FLAGS=mode=FAST_RUN,device=cpu,floatX=float32 python conv_net_sentence.py
 
 This will run the CNN-rand, CNN-static, and CNN-nonstatic models respectively in the paper.
 
-### Using the GPU
-GPU will result in a good 10x to 20x speed-up, so it is highly recommended. 
+### Using the GPU (Windows)
+GPU will result in a good 10x to 20x speed-up, so it is highly recommended.
 To use the GPU, simply change `device=cpu` to `device=gpu` (or whichever gpu you are using).
 For example:
 ```
-THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 python conv_net_sentence.py -nonstatic -word2vec
+set THEANO_FLAGS="mode=FAST_RUN"  & set THEANO_FLAGS="device=cpu" & set THEANO_FLAGS="floatX=float32" & python conv_net_sentence.py -nonstatic -rand
+set THEANO_FLAGS="mode=FAST_RUN,device=gpu,floatX=float32" & python conv_net_sentence.py -static -word2vec
+set THEANO_FLAGS="mode=FAST_RUN,device=gpu,floatX=float32" & python conv_net_sentence.py -nonstatic -word2vec
 ```
 
 ### Example output
